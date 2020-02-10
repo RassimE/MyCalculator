@@ -1,0 +1,45 @@
+// Initial data
+IAS_interm = 180
+H = 1800
+WS = 50
+VAR = 15
+BankAngle = 18.0
+TurnAngle = 97.7
+
+// routines
+IasToTas(IAS, h, var) = IAS * 171233.0 * sqrt(288 + var - 0.00198 * h)/(288 - 0.00198 * h)^2.628
+TasToIas(TAS, h, var) = TAS * (288 - 0.00198 * h)^2.628 / (171233.0 * sqrt(288 + var - 0.00198 * h))
+
+// Calculation
+bank = degtorad(BankAngle)
+turn_angle = degtorad(TurnAngle)
+
+TAS = IasToTas(IAS_interm, H, VAR)			// True airspeed
+"TAS = " + TAS		// = 189.64462865047
+""
+"bank = " + bank		// = 0.31415926535898
+""
+
+GS = TAS + WS		// Ground speed
+"GS = " + GS		// = 239.64462865047
+""
+RW = 3431 * tan(bank) / (PI * GS)
+"RW = " + RW		// = 1.4807412829849
+""
+
+R_T = GS / (20 * PI * RW)
+"R_T = " + R_T		// = 2.5757792852415
+
+GS = sqrt(R_T * 20 * 3431 * tan(bank))
+"GS = " + GS		// = 239.64462865047
+""
+
+//max_IAS = TasToIas(GS - WS, H, VAR)	//maximal indicated airspeed
+max_IAS = TasToIas(GS, H, VAR)		//maximal indicated airspeed
+"max_IAS = " + max_IAS
+""
+
+"turn_angle = " + turn_angle	//= 1.7051866791985
+""
+DTA = R_T * tan(0.5 * turn_angle)
+"DTA = " + DTA		//= 2.9474749188391
