@@ -1,0 +1,30 @@
+//Commonly Used Constants
+sqrt2 = sqrt(2)
+sqrt3 = sqrt(3)
+sqrt5 = sqrt(5)
+
+//Golden ratio
+goldenRatio = 0.5 * (1 + sqrt5)		// or goldenRatio = 2 * Sin(54)
+
+//Trigonometry
+Sin(x) = sin(DegToRadVal * x)
+Cos(x) = cos(DegToRadVal * x)
+Tan(x) = tan(DegToRadVal * x)
+Sec(x) = sec(DegToRadVal * x)
+CoSec(x) = cosec(DegToRadVal * x)
+CoTan(x) = cotan(DegToRadVal * x)
+
+//Inverse trigonometry
+Asin(x) = RadToDegVal * asin(x)
+Acos(x) = RadToDegVal * acos(x)
+Atan(x) = RadToDegVal * atan(x)
+Atan2(y, x) = RadToDegVal * atan2(y, x)
+
+//COMMON MATH FORMULAS
+Sqr(x) = x * x
+//returns distance between the point with coordinates (x1, y1) and the point with coordinates (x2, y2)
+Distance(x1, y1, x2, y2) = hypot(x2 - x1, y2 - y1)
+
+//Fibonacci sequence
+//Fn(n)= ((1 + sqrt(5))^n - (1 - sqrt(5))^n) / (2^n * sqrt(5))	//independent version
+Fn(n)= (goldenRatio^n - (1 - goldenRatio)^n) / sqrt5
