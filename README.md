@@ -1,6 +1,6 @@
 # Simple but powerful calculator
 
-# supported operations:
+## supported operations:
 
 + &#43;	addition numeric and concotenation of string operands;<br>
 + &#45;	subtraction and sign changing;<br>
