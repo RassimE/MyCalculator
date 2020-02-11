@@ -101,6 +101,7 @@ a<br>
 [sin(a)+5]*2<br>
 &lt;\Code_example&gt;
 
-while the application is running<br>
-press <Enter> to calculate<br>
-press <Shift + Enter> for a new line<br>
+while the application is running <br>
+press &lt;Enter&gt; to calculate <br>
+press &lt;Shift + Enter&gt; for a new line<br>
+
