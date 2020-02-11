@@ -1,6 +1,6 @@
 # Simple but powerful calculator
 
-## supported operations:
+### supported operations:
 
 + &#43;	addition numeric and concotenation of string operands;<br>
 + &#45;	subtraction and sign changing;<br>
@@ -15,13 +15,13 @@
 
 double slash "//" comments everything to the end of the current line<br><br>
 
-Predefined variables:<br>
+### Predefined variables:<br>
 + PI		= 3.14159265358979<br>
 + E		= 2.71828182845905<br>
 + DegToRadVal	= 0.0174532925199433<br>
 + RadToDegVal	= 57.2957795130823<br><br>
 
-built-in functions:<br><br>
+### Built-in functions:<br><br>
 
 + degtorad(a)	Converts angle from degrees to radians;<br>
 + radtodeg(a)	Converts angle from radians to degrees;<br>
