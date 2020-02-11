@@ -85,13 +85,13 @@ a = 2<br>
 hypot(a + 1, 3 + 1)<br>
 "a = " + a<br><br>
 "! Important remark !"<br>
-"example below works great"<br>
+"example below works great:"<br>
 a<br>
 2*(sin(a)+5)<br><br>
 "but below example not works without ';' (end of expression) symbol!"<br>
 a;<br>
 (sin(a)+5)*2<br><br>
-"Alternatively you can use the '[]' or '{}' brackets."<br>
+"Alternatively you can use the '[]' or '{}' brackets:"<br>
 a<br>
 [sin(a)+5]*2<br>
 &lt;\Code example&gt;<br><br>
