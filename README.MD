@@ -57,50 +57,50 @@ double slash "//" comments everything to the end of the current line
 
 Additional libraries must be located in "Lib" folder in plain text format.
 
-Numeric variable declaration example:
+Numeric variable declaration example:<br>
 n = 5 a = 2
 
-String variable declaration example:
+String variable declaration example:<br>
 s = "Hello, World!!!"
 
-You can define a function that consists of a single expression
-Function declaration example:
-h(x)=2 * x + 1
+You can define a function that consists of a single expression<br>
+Function declaration example:<br>
+h(x)=2 * x + 1<br>
 Cos(x) = cos(degtorad(x))
 
-&lt;Code_example&gt;
-t = ticks()
-t
-t * 1
-"
-19!
-19! * 1
+&lt;Code_example&gt;<br>
+t = ticks()<br>
+t<br>
+t * 1<br>
+"<br>
+19!<br>
+19! * 1<br>
 
-""
-h(x) = 2 * x + 1
+""<br>
+h(x) = 2 * x + 1<br>
 h(h(1))
 
-""
-9^3!
-""
-a = 2
-hypot(a + 1, 3 + 1)
-"a = " + a
+""<br>
+9^3!<br>
+""<br>
+a = 2<br>
+hypot(a + 1, 3 + 1)<br>
+"a = " + a<br>
 
-"! Important remark !"
-"example below works great"
-a
+"! Important remark !"<br>
+"example below works great"<br>
+a<br>
 2*(sin(a)+5)
 
-"but below example not works without ';' (end of expression) symbol!"
-a;
+"but below example not works without ';' (end of expression) symbol!"<br>
+a;<br>
 (sin(a)+5)*2
 
-"Alternatively you can use the '[]' or '{}' brackets."
-a
-[sin(a)+5]*2
+"Alternatively you can use the '[]' or '{}' brackets."<br>
+a<br>
+[sin(a)+5]*2<br>
 &lt;\Code_example&gt;
 
-while the application is running
-press <Enter> to calculate
-press <Shift + Enter> for a new line
+while the application is running<br>
+press <Enter> to calculate<br>
+press <Shift + Enter> for a new line<br>
