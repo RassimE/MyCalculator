@@ -69,7 +69,7 @@ Cos(x) = cos(degtorad(x))<br>
 h(x)=2 * x + 1<br>
 Cos(x) = cos(degtorad(x))<br><br>
 
-<Code example><br>
+&lt;Code example&gt;<br>
 t = ticks() <br>
 t <br>
 t * 1 <br>
@@ -100,7 +100,7 @@ a; <br>
 "Alternatively you can use the '[]' or '{}' brackets." <br>
 a <br>
 [sin(a)+5]*2 <br>
-<\Code example> <br><br>
+&lt;\Code example&gt; <br><br>
 
 while the application is running <br>
 press <Enter> to calculate <br>
