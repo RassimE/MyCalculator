@@ -66,8 +66,7 @@ s = "Hello, World!!!"<br><br>
 You can define a function that consists of a single expression<br>
 Function declaration example:<br>
 Cos(x) = cos(degtorad(x))<br>
-h(x)=2 * x + 1<br>
-Cos(x) = cos(degtorad(x))<br><br>
+h(x)=2 * x + 1<br><br>
 
 &lt;Code example&gt;<br>
 t = ticks()<br>
