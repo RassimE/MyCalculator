@@ -70,38 +70,38 @@ h(x)=2 * x + 1<br>
 Cos(x) = cos(degtorad(x))<br><br>
 
 <Code example><br>
-t = ticks()<br>
-t<br>
-t * 1<br>
-"<br>
-19!<br>
-19! * 1<br><br>
+t = ticks() <br>
+t <br>
+t * 1 <br>
+" <br>
+19! <br>
+19! * 1 <br><br>
 
-""<br>
-h(x) = 2 * x + 1<br>
-h(h(1))<br><br>
+"" <br>
+h(x) = 2 * x + 1 <br>
+h(h(1)) <br><br>
 
-""<br>
-9^3!<br>
-""<br>
-a = 2<br>
-hypot(a + 1, 3 + 1)<br>
-"a = " + a<br><br>
+"" <br>
+9^3! <br>
+"" <br>
+a = 2 <br>
+hypot(a + 1, 3 + 1) <br>
+"a = " + a <br><br>
 
-"! Important remark !"<br>
-"example below works great"<br>
-a<br>
-2*(sin(a)+5)<br><br>
+"! Important remark !" <br>
+"example below works great" <br>
+a <br>
+2*(sin(a)+5) <br><br>
 
-"but below example not works without ';' (end of expression) symbol!"<br>
-a;<br>
-(sin(a)+5)*2<br><br>
+"but below example not works without ';' (end of expression) symbol!" <br>
+a; <br>
+(sin(a)+5)*2 <br><br>
 
-"Alternatively you can use the '[]' or '{}' brackets."<br>
-a<br>
-[sin(a)+5]*2<br>
-<\Code example><br><br>
+"Alternatively you can use the '[]' or '{}' brackets." <br>
+a <br>
+[sin(a)+5]*2 <br>
+<\Code example> <br><br>
 
-while the application is running<br>
-press <Enter> to calculate<br>
+while the application is running <br>
+press <Enter> to calculate <br>
 press <Shift + Enter> for a new line<br>
