@@ -2,16 +2,16 @@
 
 #supported operations:
 
-++	addition numeric and concotenation of string operands;<br>
-+-	subtraction and sign changing;<br>
-+*	multiplication;<br>
-+/	dividing;<br>
-+%	modulo calculation;<br>
-+=	assigning<br>
-+^	power<br>
-+**	power<br>
-+!	factorial<br>
-+;	end of expression<br><br>
++	addition numeric and concotenation of string operands;<br>
+-	subtraction and sign changing;<br>
+*	multiplication;<br>
+/	dividing;<br>
+%	modulo calculation;<br>
+=	assigning<br>
+^	power<br>
+**	power<br>
+!	factorial<br>
+;	end of expression<br><br>
 
 double slash "//" comments everything to the end of the current line<br><br>
 
@@ -23,37 +23,37 @@ RadToDegVal	= 57.2957795130823<br><br>
 
 built-in functions:<br><br>
 
-+degtorad(a)	Converts angle from degrees to radians;<br>
-+radtodeg(a)	Converts angle from radians to degrees;<br>
-+sin(a)		Returns the sine of the specified angle measured in radians;<br>
-+cos(a)		Returns the cosine of the specified angle measured in radians;<br>
-+tan(a)		Returns the tangent of the specified angle measured in radians;<br>
-+sec(a)		Returns the secant of the specified angle measured in radians;<br>
-+cosec(a)	Returns the cosecant of the specified angle measured in radians;<br>
-+cotan(a)	Returns the cotangent of the specified angle measured in radians;<br>
-+asin(d)		Returns the angle in radians whose sine is the specified number;<br>
-+acos(d)		Returns the angle in radians whose cosine is the specified number;<br>
-+atan(d)		Returns the angle in radians whose tangent is the specified number;<br>
-+atan2(y, x)	Returns the angle in radians whose tangent is the quotient of two specified numbers;<br>
-+sinh(a)		Returns the hyperbolic sine of the specified angle measured in radians;<br>
-+cosh(a)		Returns the hyperbolic cosine of the specified angle measured in radians;<br>
-+tanh(a)		Returns the hyperbolic tangent of the specified angle measured in radians;<br>
-+hypot(a, b)	Returns the length of the hypotenuse of a right-angle triangle;<br>
-+abs(n)		Returns the absolute value of a number;<br>
-+sign(n)		Returns an integer that indicates the sign of a number;<br>
-+round(n)	Rounds a number to the nearest integral value;<br>
-+ceil(n)		Returns the smallest integral value that is greater than or equal to the number;<br>
-+floor(n)	Returns the largest integer less than or equal to the specified number;<br>
-+sqrt(n)		Returns the square root of a specified number;<br>
-+exp(a)		Returns 'E' raised to the specified power;<br>
-+pow(x, y)	Returns a 'x' raised to the 'y' power;<br>
-+ln(n)		Returns the natural (base e) logarithm of a specified number;<br>
-+log10(n)	Returns the base 10 logarithm of a specified number;<br>
-+log(n, b)	Returns the logarithm of the 'n' in the base 'b';<br>
-+min(a, b)	Returns the smaller of two numbers;<br>
-+max(a, b)	Returns the larger of two numbers;<br>
-+rand()		Returns a random number that is greater than or equal to 0.0, and less than 1.0;<br>
-+ticks()		Gets the number of ticks that represent the date and time of this instance;<br><br>
+degtorad(a)	Converts angle from degrees to radians;<br>
+radtodeg(a)	Converts angle from radians to degrees;<br>
+sin(a)		Returns the sine of the specified angle measured in radians;<br>
+cos(a)		Returns the cosine of the specified angle measured in radians;<br>
+tan(a)		Returns the tangent of the specified angle measured in radians;<br>
+sec(a)		Returns the secant of the specified angle measured in radians;<br>
+cosec(a)	Returns the cosecant of the specified angle measured in radians;<br>
+cotan(a)	Returns the cotangent of the specified angle measured in radians;<br>
+asin(d)		Returns the angle in radians whose sine is the specified number;<br>
+acos(d)		Returns the angle in radians whose cosine is the specified number;<br>
+atan(d)		Returns the angle in radians whose tangent is the specified number;<br>
+atan2(y, x)	Returns the angle in radians whose tangent is the quotient of two specified numbers;<br>
+sinh(a)		Returns the hyperbolic sine of the specified angle measured in radians;<br>
+cosh(a)		Returns the hyperbolic cosine of the specified angle measured in radians;<br>
+tanh(a)		Returns the hyperbolic tangent of the specified angle measured in radians;<br>
+hypot(a, b)	Returns the length of the hypotenuse of a right-angle triangle;<br>
+abs(n)		Returns the absolute value of a number;<br>
+sign(n)		Returns an integer that indicates the sign of a number;<br>
+round(n)	Rounds a number to the nearest integral value;<br>
+ceil(n)		Returns the smallest integral value that is greater than or equal to the number;<br>
+floor(n)	Returns the largest integer less than or equal to the specified number;<br>
+sqrt(n)		Returns the square root of a specified number;<br>
+exp(a)		Returns 'E' raised to the specified power;<br>
+pow(x, y)	Returns a 'x' raised to the 'y' power;<br>
+ln(n)		Returns the natural (base e) logarithm of a specified number;<br>
+log10(n)	Returns the base 10 logarithm of a specified number;<br>
+log(n, b)	Returns the logarithm of the 'n' in the base 'b';<br>
+min(a, b)	Returns the smaller of two numbers;<br>
+max(a, b)	Returns the larger of two numbers;<br>
+rand()		Returns a random number that is greater than or equal to 0.0, and less than 1.0;<br>
+ticks()		Gets the number of ticks that represent the date and time of this instance;<br><br>
 
 Additional libraries must be located in "Lib" folder in plain text format.<br><br>
 
