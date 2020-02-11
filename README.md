@@ -1,10 +1,10 @@
-#Simple but powerful calculator
+# Simple but powerful calculator
 
-#supported operations:
+# supported operations:
 
-+ +	addition numeric and concotenation of string operands;<br>
-+ -	subtraction and sign changing;<br>
-+ *	multiplication;<br>
++ &#43;	addition numeric and concotenation of string operands;<br>
++ &#45;	subtraction and sign changing;<br>
++ &#42;	multiplication;<br>
 + /	dividing;<br>
 + %	modulo calculation;<br>
 + =	assigning<br>
