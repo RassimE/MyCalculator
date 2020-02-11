@@ -83,7 +83,8 @@ h(h(1))<br><br>
 "" <br>
 a = 2<br>
 hypot(a + 1, 3 + 1)<br>
-"a = " + a<br><br>
+"a = " + a<br>
+""<br><br>
 "! Important remark !"<br>
 "example below works great:"<br>
 a<br>
