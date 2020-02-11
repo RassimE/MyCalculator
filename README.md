@@ -87,10 +87,12 @@ hypot(a + 1, 3 + 1)<br>
 "! Important remark !"<br>
 "example below works great:"<br>
 a<br>
-2*(sin(a)+5)<br><br>
+2*(sin(a)+5)<br>
+""<br><br>
 "but below example not works without ';' (end of expression) symbol!"<br>
 a;<br>
-(sin(a)+5)*2<br><br>
+(sin(a)+5)*2<br>
+""<br><br>
 "Alternatively you can use the '[]' or '{}' brackets:"<br>
 a<br>
 [sin(a)+5]*2<br>
