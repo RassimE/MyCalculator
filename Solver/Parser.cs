@@ -9,7 +9,7 @@ namespace Calculator
 		List<Symbol> _tokens;
 		Dictionary<TokenType, Symbol> _symbols;
 
-		void symbol(TokenType id, Func<Symbol, Symbol> nud = null, int lbp = 0, Func<Symbol, Symbol> led = null)
+		void putSymbol(TokenType id, Func<Symbol, Symbol> nud = null, int lbp = 0, Func<Symbol, Symbol> led = null)
 		{
 			if (_symbols.TryGetValue(id, out Symbol sym))
 			{
@@ -28,6 +28,23 @@ namespace Calculator
 				};
 		}
 
+		Symbol getNextSymbol()
+		{
+			if (_i >= _tokens.Count)
+			{
+				string errorString = string.Format("Unexpected end at line {0} position {1}.", _tokens[_tokens.Count - 1].stRow, _tokens[_tokens.Count - 1].stCol);
+				throw new Exception(errorString);
+			}
+
+			var sym = _tokens[_i++];
+
+			sym.lbp = _symbols[sym.type].lbp;
+			sym.nud = _symbols[sym.type].nud;
+			sym.led = _symbols[sym.type].led;
+
+			return sym;
+		}
+
 		void infix(TokenType id, int lbp, int rbp = 0, Func<Symbol, Symbol> led = null)
 		{
 			rbp = rbp | lbp;
@@ -39,21 +56,21 @@ namespace Calculator
 					{
 						type = id,
 						left = a,
-						right = expression(rbp)
+						right = evalExpression(rbp)
 					};
 				};
 
-			symbol(id, null, lbp, led);
+			putSymbol(id, null, lbp, led);
 		}
 
 		void prefix(TokenType id, int rbp)
 		{
-			symbol(id, (Symbol a) =>
+			putSymbol(id, (Symbol a) =>
 				{
 					return new Symbol()
 					{
 						type = id,
-						right = expression(rbp)
+						right = evalExpression(rbp)
 					};
 				});
 		}
@@ -62,17 +79,17 @@ namespace Calculator
 		{
 			_symbols = new Dictionary<TokenType, Symbol>();
 
-			symbol(TokenType.comma);
-			symbol(TokenType.rightPar);
-			symbol(TokenType.rightPar1);
-			symbol(TokenType.rightPar2);
+			putSymbol(TokenType.comma);
+			putSymbol(TokenType.rightPar);
+			putSymbol(TokenType.rightPar1);
+			putSymbol(TokenType.rightPar2);
 
-			symbol(TokenType.end);
-			symbol(TokenType.ende);
-			symbol(TokenType.number, (Symbol a) => { return a; });
-			symbol(TokenType.litstring, (Symbol a) => { return a; });
+			putSymbol(TokenType.end);
+			putSymbol(TokenType.ende);
+			putSymbol(TokenType.number, (Symbol a) => { return a; });
+			putSymbol(TokenType.litstring, (Symbol a) => { return a; });
 
-			symbol(TokenType.identifier, (Symbol a) =>
+			putSymbol(TokenType.identifier, (Symbol a) =>
 					{
 						if (_tokens[_i].type == TokenType.leftPar)
 						{
@@ -85,7 +102,7 @@ namespace Calculator
 								do
 								{
 									_i++;
-									args.Add(expression(2));
+									args.Add(evalExpression(2));
 								} while (_tokens[_i].type == TokenType.comma);
 
 								if (_tokens[_i].type != TokenType.rightPar)
@@ -107,9 +124,9 @@ namespace Calculator
 						return a;
 					});
 
-			symbol(TokenType.leftPar, (Symbol a) =>
+			putSymbol(TokenType.leftPar, (Symbol a) =>
 					{
-						var value = expression(2);
+						var value = evalExpression(2);
 						if (_tokens[_i].type != TokenType.rightPar)
 						{
 							string errorString = string.Format("Expected closing parenthesis ')' at line {0} position {1}.", _tokens[_i].stRow, _tokens[_i].stCol);
@@ -121,9 +138,9 @@ namespace Calculator
 						return value;
 					});
 
-			symbol(TokenType.leftPar1, (Symbol a) =>
+			putSymbol(TokenType.leftPar1, (Symbol a) =>
 					{
-						var value = expression(2);
+						var value = evalExpression(2);
 						if (_tokens[_i].type != TokenType.rightPar1)
 						{
 							string errorString = string.Format("Expected closing bracket ']' at line {0} position {1}.", _tokens[_i].stRow, _tokens[_i].stCol);
@@ -135,9 +152,9 @@ namespace Calculator
 						return value;
 					});
 
-			symbol(TokenType.leftPar2, (Symbol a) =>
+			putSymbol(TokenType.leftPar2, (Symbol a) =>
 				   {
-					   var value = expression(2);
+					   var value = evalExpression(2);
 					   if (_tokens[_i].type != TokenType.rightPar2)
 					   {
 						   string errorString = string.Format("Expected closing bracket '}' at line {0} position {1}.", _tokens[_i].stRow, _tokens[_i].stCol);
@@ -149,7 +166,7 @@ namespace Calculator
 					   return value;
 				   });
 
-			symbol(TokenType.fact, null, 8, (Symbol a) =>
+			putSymbol(TokenType.fact, null, 8, (Symbol a) =>
 					{
 						return new Symbol()
 						{
@@ -183,7 +200,7 @@ namespace Calculator
 								type = TokenType.function,
 								name = left.name,
 								args = left.args,
-								value = expression(2)
+								value = evalExpression(2)
 							};
 						}
 						else if (left.type == TokenType.identifier)
@@ -192,7 +209,7 @@ namespace Calculator
 							{
 								type = TokenType.assign,
 								name = left.name,
-								value = expression(2)
+								value = evalExpression(2)
 							};
 						}
 						else
@@ -203,28 +220,11 @@ namespace Calculator
 					});
 		}
 
-		Symbol getToken()
+		Symbol evalExpression(int rbp)
 		{
-			if (_i >= _tokens.Count)
-			{
-				string errorString = string.Format("Unexpected end at line {0} position {1}.", _tokens[_tokens.Count - 1].stRow, _tokens[_tokens.Count - 1].stCol);
-				throw new Exception(errorString);
-			}
-
-			var sym = _tokens[_i++];
-
-			sym.lbp = _symbols[sym.type].lbp;
-			sym.nud = _symbols[sym.type].nud;
-			sym.led = _symbols[sym.type].led;
-
-			return sym;
-		}
-
-		Symbol expression(int rbp)
-		{
-			Symbol t = getToken();
+			Symbol t = getNextSymbol();
 			while (t.type == TokenType.ende)
-				t = getToken();
+				t = getNextSymbol();
 
 			if (t.type == TokenType.end)
 				return t;
@@ -239,7 +239,7 @@ namespace Calculator
 			left.stRow = t.stRow;
 			left.stCol = t.stCol;
 
-			t = getToken();
+			t = getNextSymbol();
 
 			while (rbp < t.lbp)
 			{
@@ -253,7 +253,7 @@ namespace Calculator
 				left.stRow = t.stRow;
 				left.stCol = t.stCol;
 
-				t = getToken();
+				t = getNextSymbol();
 			}
 			_i--;
 			return left;
@@ -268,7 +268,7 @@ namespace Calculator
 			List<Symbol> result = new List<Symbol>();
 
 			while (_i < _tokens.Count)
-				result.Add(expression(0));
+				result.Add(evalExpression(0));
 
 			return result;
 		}
