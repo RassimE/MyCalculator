@@ -39,8 +39,8 @@ namespace Calculator
 
 		void initInterpreter()
 		{
-			_consts = new Dictionary<string, object>();                 //StringComparer.OridinalIgnoreCase
-			_builtInFunctions = new Dictionary<string, Func<object>>(); //StringComparer.OridinalIgnoreCase
+			_consts = new Dictionary<string, object>();
+			_builtInFunctions = new Dictionary<string, Func<object>>();
 
 			_consts["PI"] = Math.PI;
 			_consts["E"] = Math.E;
@@ -114,8 +114,8 @@ namespace Calculator
 			_parser = new Parser();
 			_rnd = new Random((int)DateTime.Now.Ticks);
 
-			_variables = new Dictionary<string, object>();              //StringComparer.OridinalIgnoreCase
-			_userFunctions = new Dictionary<string, Func<object>>();    //StringComparer.OridinalIgnoreCase
+			_variables = new Dictionary<string, object>();
+			_userFunctions = new Dictionary<string, Func<object>>();
 
 			_argValues = new List<object>();
 			_args = new Dictionary<string, object>();
