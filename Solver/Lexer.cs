@@ -89,7 +89,7 @@ namespace Calculator
 					}
 
 					// Read scientific notation (suffix)
-					if ((c | 32) == 'e')
+					if (char.ToLower(c) == 'e')
 					{
 						num += c;
 						c = getChar();
