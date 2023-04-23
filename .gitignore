@@ -8,3 +8,5 @@
 /.vs/Calculator/v17
 /.vs/Calculator/FileContentIndex
 /bin/Release/Calculator.pdb
+/bin/Debug/Calculator.exe.config
+/bin/Debug/Calculator.exe
