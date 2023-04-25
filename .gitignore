@@ -10,3 +10,10 @@
 /bin/Release/Calculator.pdb
 /bin/Debug/Calculator.exe.config
 /bin/Debug/Calculator.exe
+/obj/Release/.NETFramework,Version=v4.5.2.AssemblyAttributes.cs
+/obj/Release/.NETFramework,Version=v4.8.AssemblyAttributes.cs
+*.cache
+*.resources
+/obj/Release/Calculator.csproj.FileListAbsolute.txt
+/.vs/MyCalculator/v17
+/.vs/VSWorkspaceState.json
