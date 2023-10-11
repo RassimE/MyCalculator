@@ -397,7 +397,8 @@ namespace Calculator
 "min(a, b)		Returns the smaller of two numbers;\r\n" +
 "max(a, b)		Returns the larger of two numbers;\r\n" +
 "rand()		Returns a random number that is greater than or equal to 0.0, and less than 1.0;\r\n" +
-"ticks()		Gets the number of ticks that represent the date and time of this instance.\r\n\r\n" +
+"ticks()		Gets the number of ticks that represent the date and time of this instance;\r\n" +
+"print(a...)		Prints the parameter(s) value(s).\r\n\r\n" +
 
 "Additional libraries must be located in \"Lib\" folder in plain text format.\r\n\r\n" +
 

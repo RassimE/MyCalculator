@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 
@@ -16,6 +17,8 @@ namespace Calculator
 
 		Dictionary<string, object> _args;
 		List<object> _argValues;
+		List<Symbol> _argNodes;
+
 		Random _rnd;
 		Parser _parser;
 		int _level;
@@ -107,6 +110,114 @@ namespace Calculator
 
 			_builtInFunctions["rand"] = () => { return _rnd.NextDouble(); };
 			_builtInFunctions["ticks"] = () => { return DateTime.Now.Ticks; };
+
+			_builtInFunctions["print"] = () =>
+			{
+				int n = _argValues.Count;
+				string res = "";
+
+				for (int i = n - 1; i >= 0; i --)
+				{
+					Symbol smb = getArgNodes(i);
+					object arqval = getArgValue(i);
+					string value = arqval.ToString();
+					res += smb.name + "(";
+
+					if (arqval is string || smb.type == TokenType.litstring || smb.type == TokenType.number)
+						res += value;
+					else if (smb.type == TokenType.identifier)
+						res += smb.name + " = " + value;
+					else if (smb.type == TokenType.call)
+					{
+						switch (smb.args.Count)
+						{
+							case 0:
+								res += ") = " + value;
+								break;
+							case 1:
+								if (smb.args[0].type == TokenType.number)
+									res += smb.args[0].value + ") = " + value;
+								else if (smb.args[0].type == TokenType.identifier)
+									res += smb.args[0].name + ") = " + value;
+								else
+									res += "x) = " + value;
+								break;
+							case 2:
+								if (smb.args[0].type == TokenType.number)
+									res += smb.args[0].value + ", ";
+								else if (smb.args[0].type == TokenType.identifier)
+									res += smb.args[0].name + ", ";
+								else
+									res += "x, ";
+
+								if (smb.args[1].type == TokenType.number)
+									res += smb.args[1].value + ") = " + value;
+								else if (smb.args[1].type == TokenType.identifier)
+									res += smb.args[1].name + ") = " + value;
+								else
+									res += "y) = " + value;
+
+								break;
+							case 3:
+								if (smb.args[0].type == TokenType.number)
+									res += smb.args[0].value + ", ";
+								else if (smb.args[0].type == TokenType.identifier)
+									res += smb.args[0].name + ", ";
+								else
+									res += "x, ";
+
+								if (smb.args[1].type == TokenType.number)
+									res += smb.args[1].value + ", ";
+								else if (smb.args[1].type == TokenType.identifier)
+									res += smb.args[1].name + ", ";
+								else
+									res += "y, ";
+
+								if (smb.args[2].type == TokenType.number)
+									res += smb.args[2].value + ") = " + value;
+								else if (smb.args[2].type == TokenType.identifier)
+									res += smb.args[2].name + ") = " + value;
+								else
+									res += "z) = " + value;
+
+								break;
+							case 4:
+								if (smb.args[0].type == TokenType.number)
+									res += smb.args[0].value + ", ";
+								else if (smb.args[0].type == TokenType.identifier)
+									res += smb.args[0].name + ", ";
+								else
+									res += "x, ";
+
+								if (smb.args[1].type == TokenType.number)
+									res += smb.args[1].value + ", ";
+								else if (smb.args[1].type == TokenType.identifier)
+									res += smb.args[1].name + ", ";
+								else
+									res += "y, ";
+
+								if (smb.args[2].type == TokenType.number)
+									res += smb.args[2].value + ", ";
+								else if (smb.args[1].type == TokenType.identifier)
+									res += smb.args[2].name + ", ";
+								else
+									res += "z, ";
+
+								if (smb.args[3].type == TokenType.number)
+									res += smb.args[3].value + ") = " + value;
+								else if (smb.args[3].type == TokenType.identifier)
+									res += smb.args[3].name + ") = " + value;
+								else
+									res += "h) = " + value;
+
+								break;
+						}
+					}
+
+					if (i > 0) res += "; ";
+				}
+				return res;
+			};
 		}
 
 		internal Interpreter()
@@ -117,6 +228,7 @@ namespace Calculator
 			_variables = new Dictionary<string, object>();
 			_userFunctions = new Dictionary<string, Func<object>>();
 
+			_argNodes = new List<Symbol>();
 			_argValues = new List<object>();
 			_args = new Dictionary<string, object>();
 
@@ -169,6 +281,15 @@ namespace Calculator
 				throw new Exception("Invalid argument count.");
 
 			return _argValues[i];
+		}
+
+		Symbol getArgNodes(int a)
+		{
+			int i = _argNodes.Count - 1 - a;
+			if (i < 0 || i >= _argNodes.Count)
+				throw new Exception("Invalid argument count.");
+
+			return _argNodes[i];
 		}
 
 		const int precalcednum = 13;
@@ -371,16 +492,25 @@ namespace Calculator
 					}
 
 					foreach (var arg in node.args)
+					{
 						_argValues.Add(evalNode(arg));
+						_argNodes.Add(arg);
+					}
 
 					_level++;
 					object ret = builtIn ? _builtInFunctions[node.name]() : _userFunctions[node.name]();
 					_level--;
 
 					if (_argValues.Count > node.args.Count)
+					{
 						_argValues.RemoveRange(_argValues.Count - node.args.Count, node.args.Count);
+						_argNodes.RemoveRange(_argNodes.Count - node.args.Count, node.args.Count);
+					}
 					else
+					{
+						_argNodes.Clear();
 						_argValues.Clear();
+					}
 
 					return ret;
 
@@ -423,6 +553,7 @@ namespace Calculator
 		void InterpretLib(string input)
 		{
 			_argValues.Clear();
+			_argNodes.Clear();
 			_args.Clear();
 
 			List<Symbol> parseTree = _parser.Parse(input);
@@ -439,6 +570,7 @@ namespace Calculator
 			_userFunctions.Clear();
 
 			_argValues.Clear();
+			_argNodes.Clear();
 			_args.Clear();
 
 			List<Symbol> parseTree = _parser.Parse(input);
