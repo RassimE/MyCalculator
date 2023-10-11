@@ -121,7 +121,6 @@ namespace Calculator
 					Symbol smb = getArgNodes(i);
 					object arqval = getArgValue(i);
 					string value = arqval.ToString();
-					res += smb.name + "(";
 
 					if (arqval is string || smb.type == TokenType.litstring || smb.type == TokenType.number)
 						res += value;
@@ -129,6 +128,8 @@ namespace Calculator
 						res += smb.name + " = " + value;
 					else if (smb.type == TokenType.call)
 					{
+						res += smb.name + "(";
+
 						switch (smb.args.Count)
 						{
 							case 0:
