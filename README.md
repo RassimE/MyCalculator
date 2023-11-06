@@ -53,8 +53,8 @@ double slash "//" comments everything to the end of the current line<br><br>
 + min(a, b)	Returns the smaller of two numbers;<br>
 + max(a, b)	Returns the larger of two numbers;<br>
 + rand()		Returns a random number that is greater than or equal to 0.0, and less than 1.0;<br>
-+ ticks()		Gets the number of ticks that represent the date and time of this instance;<br><br>
-+ print(a...)	Prints the parameter(s) value(s).
++ ticks()		Gets the number of ticks that represent the date and time of this instance;<br>
++ print(a...)	Prints the parameter(s) value(s).<br><br>
 
 Additional libraries must be located in "Lib" folder in plain text format.<br><br>
 
